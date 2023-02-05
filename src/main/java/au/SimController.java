@@ -20,10 +20,10 @@ public class SimController {
 
 		// post ICCID to actuator
 		RestTemplate restTemplate = new RestTemplate();
-		Boolean success = restTemplate.postForObject(endPoint, actuatorRequest, Boolean.class);
+		ActuationResult result = restTemplate.postForObject(endPoint, actuatorRequest, ActuationResult.class);
 		
 		// get response from actuator whether success or not
-		if (success) {
+		if (result.getSuccess()) {
 			System.out.println("Activating the sim card was a success!");
 		} else {
 			System.out.println("Activating the sim failed");
