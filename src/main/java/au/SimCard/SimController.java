@@ -47,9 +47,9 @@ public class SimController {
 	}
 
 	// set up query endpoint
-	@GetMapping("/simcards/{simCardId}")
+	@GetMapping("/query")
 	public ResponseEntity<SimCardInfo> endPointQuery(@PathVariable Long simCardId) {
-		Optional<SimCardInfo> matchingSim = simCardRepo.findById(simCardId);
+		var matchingSim = simCardRepo.findById(simCardId);
 		
 		// return if simCardId is present
 		if (matchingSim.isPresent()) {
