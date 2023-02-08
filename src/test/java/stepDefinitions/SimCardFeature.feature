@@ -9,14 +9,9 @@ Feature: Sim Card Activation
   Given the SIM Card Activator is up and running
   When I submit a request to activate the ICCID '1255789453849037777'
   Then I should receive a success response from the microservice
-  And when I query the databse for the ICCID '1255789453849037777'
-  I should receive a response indicating that the SIM card has been activated successfully
 
   # Unsuccessful scenario
   Scenario: Failed sim card activation
-  Given the REST Controller receives the Sim Card info from the post request
-  When the ICCID is sent to the actuator
-  Then the actuaor should return that it was successful
-  And the sim card should be sent to the database
-  When the database is queried for the sim card info
-  Then the query should fail and the activation be unsuccessful
+  Given the SIM Card Activator is up and running
+  When I submit a request to activate the ICCID '8944500102198304826'
+  Then I should receive a failed response from the microservice
